@@ -4,6 +4,7 @@ export interface ICredential {
 }
 export interface IUSer {
     uid?: string;
-    name?: string;
+    name: string;
     email: string;
+    password?: string;
 }
