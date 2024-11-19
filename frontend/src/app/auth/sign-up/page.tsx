@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Traco } from "../../components/ui/traco";
 import { IUSer } from "../../../@libs/types";
 import { AuthService } from "../../../services/auth-service";
-
+import { toast } from "react-toastify";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -26,17 +26,17 @@ function SignUpPage() {
 
     AuthService.signUp(user)
       .then(() => {
+        toast.success("Conta criada com sucesso")
         navigate('/auth/sign-in')
       })
       .catch(error => {
-        console.log('PAU', error)
+        toast.error(String(error))
       })
       .finally(() => {
         setLoading(false)
-      });
-
-    
+      });   
   }
+
   return (
     <form onSubmit={handleSignUp}>
       <Stack
